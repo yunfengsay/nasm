@@ -18,12 +18,12 @@ install: mykernel.bin
 	sudo cp $< /boot/mykernel.bin
 
 mykernel.iso: mykernel.bin
-	make -p iso/boot/grub
+	mkdir -p iso/boot/grub
 	cp $< iso/boot/
 	echo 'set timeout=0' > iso/boot/grub/grub.cfg
 	echo 'set default=0' >> iso/boot/grub/grub.cfg
 	echo '' >> iso/boot/grub/grub.cfg
-	echo'menuentry "MyOS_01" {' >> iso/boot/grub/grub.cfg
+	echo 'menuentry "MyOS_01" {' >> iso/boot/grub/grub.cfg
 	echo ' multiboot /boot/makernel.bin' >> iso/boot/grub/grub.cfg
 	echo ' boot' >> iso/boot/grub/grub.cfg
 	echo '}' >> iso/boot/grub/grub.cfg
